@@ -18,9 +18,9 @@ public class Driver {
 			System.out.println("Enter name, health, power, and level of pokemon #" + i + ":");
 		    String [] input = stdIn.nextLine().split(" ");
 			String name = input[0];
-			int health = Integer.parseInt(input[1]);
-			int power = Integer.parseInt(input[2]);
-			int level = Integer.parseInt(input[3]);
+			int health = Integer.parseInt(input[1].trim());
+			int power = Integer.parseInt(input[2].trim());
+			int level = Integer.parseInt(input[3].trim());
 			pokemon = makePokemon(name,health,power,level);
 			if(pokemon != null && Contains(pokemon, arrOfPokemons) == false) {
 				arrOfPokemons[pokeCounter++] = pokemon;
