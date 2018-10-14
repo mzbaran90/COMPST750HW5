@@ -15,6 +15,9 @@ public class Driver {
 
 			//TODO
 			//Read input from user.
+			do {
+				
+			
 			System.out.println("Enter name, health, power, and level of pokemon #" + i + ":");
 		    String [] input = stdIn.nextLine().split(" ");
 			String name = input[0];
@@ -22,18 +25,26 @@ public class Driver {
 			int power = Integer.parseInt(input[2].trim());
 			int level = Integer.parseInt(input[3].trim());
 			pokemon = makePokemon(name,health,power,level);
-			if(pokemon != null && Contains(pokemon, arrOfPokemons) == false) {
+			
+			if(health < 0 || power < 0 || level < 0) { // checks for positive values. Sets pokemon to null if so.
+				pokemon = null;
+				System.out.println("One of the values you have entered is negative"
+						+ " please enter a another pokemon");
+			}
+			else if(Contains(pokemon, arrOfPokemons) == false) { 
 				arrOfPokemons[pokeCounter++] = pokemon;
 				
 			}
+
+			} while(arrOfPokemons[i] == null);
 			
-			
-			
+		}
+		
 			
 			
 			//Create a pokemon and add it to the array if it is not a duplicate.
 
-		}
+		
 
 
 		System.out.println();
@@ -43,7 +54,7 @@ public class Driver {
 
 		System.out.println();
 		for(int i=0; i<3;i++){
-			play(arrOfPokemons, stdIn, pokeCounter);
+			play(arrOfPokemons, stdIn, i);
 		}
 
 
@@ -52,8 +63,8 @@ public class Driver {
 		print(arrOfPokemons);
 
 		stdIn.close();
-	}
-
+	
+		}
 	private static void print(Pokemon[] arrOfPokemons){
 
 		//Print the pokemons in the arrOfPokemons array 
@@ -115,10 +126,14 @@ public class Driver {
 
 
 		if(pok == null) {
+			System.out.println("Something isn't right about these values. "
+					+ "Please Enter another Pokemon.");
 			return true;
+			
 		}
 		for(int p = 0; p < arrOfPokemons.length && arrOfPokemons[p] != null; p++) {
 			if (arrOfPokemons[p].equals(pok)) {
+				System.out.print("These Pokemon has already been added. Try Again.");
 				return true;
 
 			}
