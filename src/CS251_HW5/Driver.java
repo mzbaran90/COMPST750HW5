@@ -103,13 +103,14 @@ public class Driver {
 	 */
 	static Pokemon makePokemon(String name, int health, int power, int level) {
 		Pokemon pokemon = null;
-		if(name.equals("Charmander")) {
+		if(name.toLowerCase().equals("charmander")) {
 			return pokemon = new Charmander(health, power, level);
 		}
-		else if(name.equals("Pikachu")) {
+		else if(name.toLowerCase().equals("pikachu")) {
 			return pokemon = new Pikachu(health, power, level);
 		}
 		else { 
+			
 			return pokemon; 
 		}
 
@@ -133,7 +134,7 @@ public class Driver {
 		}
 		for(int p = 0; p < arrOfPokemons.length && arrOfPokemons[p] != null; p++) {
 			if (arrOfPokemons[p].equals(pok)) {
-				System.out.print("These Pokemon has already been added. Try Again.");
+				System.out.print("This Pokemon has already been added. Try Again. ");
 				return true;
 
 			}
